@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11132b"><meta name="description" content="Four beginner-friendly random games with matching Python code and step-by-step traces.">
+<title>Random Arcade — Python Edition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#11132b;--panel:#1a1d3b;--panel2:#222547;--line:#373b5a;--muted:#a7acc9;--white:#f7f4ef;--lime:#c7f56d;--pink:#ff9fbe;--purple:#ada5ff;--orange:#ffca83}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:16px 'DM Sans',sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid var(--lime);outline-offset:3px}.wrap{max-width:1240px;margin:auto;padding:0 30px}.top{border-bottom:1px solid #303451}.top .wrap{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.6px}.logo{display:grid;place-items:center;background:var(--lime);color:#11132b;width:37px;height:37px;border-radius:11px;font-size:24px}.small-label{font:11px 'DM Mono',monospace;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}.top-tag{border:1px solid var(--line);border-radius:24px;padding:9px 15px;color:#cbcde0;font-size:12px}.hero{padding:48px 0 38px}.eyebrow{color:var(--lime);font:12px 'DM Mono',monospace;letter-spacing:1.7px;text-transform:uppercase}.hero h1{font:700 clamp(38px,5vw,64px)/1.06 'Space Grotesk',sans-serif;letter-spacing:-2.7px;margin:18px 0 14px}.hero h1 em{font-style:normal;color:var(--lime)}.hero p{color:var(--muted);max-width:680px;font-size:16px;line-height:1.65;margin:0}.games{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:32px 0 26px}.game-tab{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:left;color:inherit;min-height:143px;position:relative;transition:.15s}.game-tab:hover{transform:translateY(-2px);border-color:#707695}.game-tab.active{background:#262b4a;border-color:var(--lime);box-shadow:inset 0 0 0 1px var(--lime)}.game-tab.active:after{content:'●';color:var(--lime);position:absolute;right:16px;top:14px;font-size:12px}.tab-icon{font-size:27px;display:block;margin-bottom:12px}.tab-title{display:block;font-weight:700;font-family:'Space Grotesk';font-size:17px}.tab-sub{display:block;color:var(--muted);font-size:12px;margin-top:4px}.workspace{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.play,.code-card{background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden}.panel-head{padding:22px 26px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px}.panel-head h2{font:700 24px 'Space Grotesk';letter-spacing:-.7px;margin:5px 0 0}.pill{color:var(--lime);border:1px solid #526444;background:#2b3a35;font:12px 'DM Mono';border-radius:20px;padding:8px 12px;white-space:nowrap}.play-body{padding:25px 26px 27px}.instructions{color:var(--muted);line-height:1.6;min-height:49px;margin:0 0 23px}.stage{background:#12152e;border:1px solid #333856;border-radius:15px;min-height:150px;display:flex;align-items:center;justify-content:center;gap:25px;padding:22px;margin-bottom:20px;text-align:center}.mystery{width:90px;height:90px;display:grid;place-items:center;border-radius:20px;background:linear-gradient(145deg,#5961a5,#373b72);font:700 50px 'Space Grotesk';box-shadow:0 10px 0 #242849;transform:rotate(-5deg)}.stage-sub{font:12px 'DM Mono';color:var(--muted);margin-top:13px}.dice{font-size:68px;line-height:1;filter:drop-shadow(0 7px 0 #202545)}.duel-part{min-width:110px}.versus{font:700 20px 'Space Grotesk';color:var(--muted)}.rps-sign{font-size:67px}.control-row{display:flex;gap:10px;flex-wrap:wrap}.control-row input{min-width:0;flex:1;background:#12152c;border:1px solid #545978;color:white;border-radius:11px;padding:15px 17px}.primary{background:var(--lime);border:0;color:#15192a;font-weight:800;border-radius:11px;padding:14px 20px;min-height:49px}.primary:hover{background:#d9ff91}.secondary{background:#2d3153;border:1px solid #545978;color:white;border-radius:11px;padding:13px 17px;min-height:47px}.secondary:hover{background:#3a4068}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choice{border:1px solid #535878;border-radius:12px;background:#282c50;color:white;padding:14px 5px;font-size:14px}.choice span{display:block;font-size:27px;margin-bottom:5px}.choice:hover{border-color:var(--lime);background:#353b60}.result{margin-top:19px;background:#292d4d;border:1px solid #444a6e;border-radius:12px;padding:15px 17px;line-height:1.5;min-height:76px}.result strong{display:block;color:var(--lime);font-size:16px;margin-bottom:3px}.result small{color:#c1c5dd;font-size:13px}.scoreline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 0 0;color:var(--muted);font:12px 'DM Mono';flex-wrap:wrap}.scoreline button{background:none;border:none;color:var(--pink);padding:0;text-decoration:underline;font:inherit}.code-head{background:#242847}.code-body{padding:0}.code-tabs{display:flex;gap:5px;padding:13px 22px 0;border-bottom:1px solid var(--line)}.code-tabs button{background:transparent;border:none;color:var(--muted);padding:10px 14px 13px;font:13px 'DM Mono';border-bottom:2px solid transparent}.code-tabs button.active{color:var(--lime);border-color:var(--lime)}.code-info{display:flex;justify-content:space-between;gap:10px;padding:18px 25px 0;align-items:center}.code-info span{font:11px 'DM Mono';color:var(--muted)}.copy{background:#303557;border:1px solid #555a7a;border-radius:7px;color:var(--white);padding:7px 11px;font-size:12px}.copy:hover{background:#454b72}pre{margin:0;padding:22px 25px 28px;color:#e5e9ff;font:13px/1.85 'DM Mono',monospace;overflow:auto;min-height:330px;tab-size:4;white-space:pre}.note{margin:0 23px 23px;border:1px solid #494f6b;background:#242845;border-radius:11px;padding:13px 15px;color:#bdc3df;font-size:12px;line-height:1.6}.trace{padding:21px 24px;min-height:330px}.trace-item{border-left:2px solid #60688b;padding:0 0 20px 16px;margin-left:7px;position:relative}.trace-item:before{content:'';width:10px;height:10px;position:absolute;left:-6px;top:2px;border-radius:50%;background:var(--purple)}.trace-item:last-child{padding-bottom:0}.trace-item b{font:12px 'DM Mono';color:var(--lime);display:block;margin-bottom:5px}.trace-item div{font-size:13px;color:#c6cbe3;line-height:1.55}.bottom{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;padding:28px 0 42px;color:var(--muted);font-size:12px}.bottom span{color:var(--lime)}@media(max-width:850px){.workspace{grid-template-columns:1fr}.games{grid-template-columns:repeat(2,1fr)}.hero{padding:32px 0 20px}.hero h1{letter-spacing:-1.7px}.top-tag{display:none}}@media(max-width:500px){.wrap{padding:0 16px}.games{gap:9px}.game-tab{padding:13px;min-height:133px}.tab-title{font-size:15px}.panel-head{padding:18px}.play-body{padding:18px}.stage{gap:12px;padding:14px}.duel-part{min-width:90px}.dice,.rps-sign{font-size:52px}pre{font-size:11px;padding:18px}.code-info{padding:14px 18px 0}.bottom{padding-bottom:25px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand"><span class="logo">✳</span> RANDOM ARCADE <span style="color:#9095ba;font-weight:400">/ Python Edition</span></div><div class="top-tag">RKE157 · WEEK 08 · INTERACTIVE LAB</div></div></header>
+<main class="wrap"><section class="hero"><div class="eyebrow">✦ Learn Python by playing</div><h1>A little randomness.<br><em>A lot of learning.</em></h1><p>Play four classic mini-games. See the equivalent Python program, then follow a step-by-step trace of what each round would do. No coding setup needed.</p></section>
+<nav class="games" aria-label="Choose a game">
+<button class="game-tab active" data-game="guess" aria-pressed="true"><span class="tab-icon">🔢</span><span class="tab-title">Guess the Number</span><span class="tab-sub">randint() · while</span></button>
+<button class="game-tab" data-game="dice" aria-pressed="false"><span class="tab-icon">🎲</span><span class="tab-title">Dice Battle</span><span class="tab-sub">randint() · if / elif</span></button>
+<button class="game-tab" data-game="rps" aria-pressed="false"><span class="tab-icon">✊</span><span class="tab-title">Rock Paper Scissors</span><span class="tab-sub">choice() · lists</span></button>
+<button class="game-tab" data-game="lucky" aria-pressed="false"><span class="tab-icon">🍀</span><span class="tab-title">Lucky Seven</span><span class="tab-sub">randint() · while</span></button>
+</nav>
+<section class="workspace"><article class="play"><div class="panel-head"><div><div class="small-label">01 / Game playground</div><h2 id="game-title">Guess the Number</h2></div><span class="pill" id="game-badge">● READY</span></div><div class="play-body"><p class="instructions" id="instructions"></p><div class="stage" id="stage" aria-live="polite"></div><div id="controls"></div><div class="result" aria-live="polite"><strong id="result-title">Your move!</strong><small id="result-detail">Make a choice to start playing.</small></div><div class="scoreline"><span id="score">ATTEMPTS: 0</span><button id="reset">↻ Reset game</button></div></div></article>
+<article class="code-card"><div class="panel-head code-head"><div><div class="small-label">02 / Under the hood</div><h2>Python code explorer</h2></div><span class="pill" style="color:var(--purple);background:#333150;border-color:#5e5886">.py</span></div><div class="code-tabs" role="tablist"><button class="active" id="tab-code" role="tab" aria-selected="true">Python code</button><button id="tab-trace" role="tab" aria-selected="false">Step-by-step trace <span id="trace-count">(0)</span></button></div><div class="code-info"><span id="filename">guess_the_number.py</span><button class="copy" id="copy">Copy code ↗</button></div><div class="code-body"><pre id="code" tabindex="0"></pre><div id="trace" class="trace" hidden></div></div><p class="note">💡 The game runs in JavaScript. The Python example shows equivalent logic; the trace explains the values and decisions from your actual game.</p></article></section>
+<footer class="bottom"><div>MADE FOR CURIOUS BEGINNERS <span>✳</span> PYTHON + PLAY</div><div>random.randint() &nbsp;·&nbsp; random.choice() &nbsp;·&nbsp; while &nbsp;·&nbsp; if</div></footer></main>
+<script>
+const $=id=>document.getElementById(id);const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;const pick=a=>a[rnd(0,a.length-1)];
+const samples={
+guess:`import random
+
+secret_number = random.randint(1, 10)
+guess = 0
+
+while guess != secret_number:
+    guess = int(input("Guess a number (1-10): "))
+
+    if guess == secret_number:
+        print("Congratulations! You guessed it!")
+    elif guess < secret_number:
+        print("Too low! Try again!")
+    else:
+        print("Too high! Try again!")`,
+dice:`import random
+
+player = random.randint(1, 6)
+computer = random.randint(1, 6)
+
+print("You rolled:", player)
+print("Computer rolled:", computer)
+
+if player > computer:
+    print("You win!")
+elif player < computer:
+    print("Computer wins!")
+else:
+    print("It's a tie!")`,
+rps:`import random
+
+choices = ["rock", "paper", "scissors"]
+computer = random.choice(choices)
+player = input("Rock, paper or scissors? ").lower()
+
+print("Computer chose:", computer)
+
+if player not in choices:
+    print("Invalid choice!")
+elif player == computer:
+    print("It's a tie!")
+elif (player == "rock" and computer == "scissors") or \\
+     (player == "paper" and computer == "rock") or \\
+     (player == "scissors" and computer == "paper"):
+    print("You win!")
+else:
+    print("Computer wins!")`,
+lucky:`import random
+
+total = 0
+rolls = 0
+
+while total != 7:
+    input("Press Enter to roll the dice!")
+    dice1 = random.randint(1, 6)
+    dice2 = random.randint(1, 6)
+    total = dice1 + dice2
+    rolls += 1
+
+    print("You rolled:", dice1, "and", dice2)
+    print("Total:", total)
+
+print("Lucky Seven! You win!")
+print("Rolls needed:", rolls)`};
+const meta={guess:['Guess the Number','The computer has a secret number from 1 to 10. Guess until you find it!','guess_the_number.py'],dice:['Dice Battle','Roll a die against the computer. The higher number wins.','dice_battle.py'],rps:['Rock Paper Scissors','Choose your move. Rock beats scissors, scissors beat paper, and paper beats rock.','rock_paper_scissors.py'],lucky:['Lucky Seven','Roll two dice until their sum is exactly seven. How many rolls will it take?','lucky_seven.py']};
+let game='guess',state={},trace=[],codeView=true;
+function log(label,detail){trace.push({label,detail});$('trace-count').textContent=`(${trace.length})`;if(!codeView)renderTrace()}
+function result(title,detail){$('result-title').textContent=title;$('result-detail').textContent=detail}
+function renderTrace(){const t=$('trace');t.replaceChildren();if(!trace.length){let p=document.createElement('p');p.textContent='Play a round to see each step here.';t.append(p);return}trace.forEach(x=>{let item=document.createElement('div');item.className='trace-item';let b=document.createElement('b'),d=document.createElement('div');b.textContent=x.label;d.textContent=x.detail;item.append(b,d);t.append(item)});t.lastElementChild?.scrollIntoView({block:'nearest',behavior:'smooth'})}
+function setView(which){codeView=which==='code';$('tab-code').classList.toggle('active',codeView);$('tab-trace').classList.toggle('active',!codeView);$('tab-code').setAttribute('aria-selected',String(codeView));$('tab-trace').setAttribute('aria-selected',String(!codeView));$('code').hidden=!codeView;$('trace').hidden=codeView;$('copy').hidden=!codeView;if(!codeView)renderTrace()}
+function stage(html){$('stage').innerHTML=html}function controls(html){$('controls').innerHTML=html}
+function start(){trace=[];$('trace-count').textContent='(0)';$('game-title').textContent=meta[game][0];$('instructions').textContent=meta[game][1];$('filename').textContent=meta[game][2];$('code').textContent=samples[game];$('game-badge').textContent='● READY';state={turns:0};
+if(game==='guess'){state.secret=rnd(1,10);state.done=false;stage('<div><div class="mystery">?</div><div class="stage-sub">SECRET: 1–10</div></div>');controls('<form id="guess-form" class="control-row"><input id="guess-input" type="number" min="1" max="10" step="1" placeholder="Enter your guess (1–10)" aria-label="Your guess" required><button class="primary" type="submit">Make a guess →</button></form>');$('guess-form').addEventListener('submit',guess);log('Program starts','secret_number = random.randint(1, 10) → a secret integer is selected. guess = 0. The loop can begin.');}
+if(game==='dice'){stage('<div class="duel-part"><div class="dice">⚀</div><div class="stage-sub">YOU</div></div><div class="versus">VS</div><div class="duel-part"><div class="dice">⚀</div><div class="stage-sub">COMPUTER</div></div>');controls('<button class="primary" id="roll" style="width:100%">🎲 Roll the dice</button>');$('roll').onclick=dice;}
+if(game==='rps'){stage('<div class="duel-part"><div class="rps-sign">❔</div><div class="stage-sub">YOU</div></div><div class="versus">VS</div><div class="duel-part"><div class="rps-sign">❔</div><div class="stage-sub">COMPUTER</div></div>');controls('<div class="choices"><button class="choice" data-move="rock"><span>✊</span>Rock</button><button class="choice" data-move="paper"><span>✋</span>Paper</button><button class="choice" data-move="scissors"><span>✌️</span>Scissors</button></div>');document.querySelectorAll('[data-move]').forEach(b=>b.onclick=()=>rps(b.dataset.move));log('List created','choices = ["rock", "paper", "scissors"]. Each round uses random.choice(choices).');}
+if(game==='lucky'){stage('<div class="duel-part"><div class="dice">⚀</div><div class="stage-sub">DIE ONE</div></div><div class="versus">+</div><div class="duel-part"><div class="dice">⚀</div><div class="stage-sub">DIE TWO</div></div>');controls('<button class="primary" id="roll" style="width:100%">🍀 Roll for seven</button>');$('roll').onclick=lucky;state.done=false;log('Program starts','total = 0 and rolls = 0. Since total != 7, the while loop begins.');}
+result('Your move!','Make a choice to start playing.');$('score').textContent=game==='guess'?'ATTEMPTS: 0':game==='lucky'?'ROLLS: 0':'ROUNDS: 0';if(!codeView)renderTrace();}
+function guess(e){e.preventDefault();if(state.done)return;const n=Number($('guess-input').value);if(!Number.isInteger(n)||n<1||n>10){result('Choose a valid number','Enter a whole number from 1 to 10.');return}state.turns++;log(`Attempt ${state.turns}: input()`, `guess = ${n}. Check guess != secret_number → ${n!==state.secret}.`);if(n===state.secret){state.done=true;stage(`<div><div class="mystery" style="background:var(--lime);color:#11132b">${state.secret}</div><div class="stage-sub">YOU FOUND IT!</div></div>`);result('You got it! 🎉',`The secret number was ${n}. You needed ${state.turns} attempt${state.turns===1?'':'s'}.`);log('if guess == secret_number → True','Print congratulations. On the next while check, guess != secret_number is False, so the loop ends.');$('game-badge').textContent='● WON';$('guess-input').disabled=true;document.querySelector('#guess-form button').disabled=true}else{const low=n<state.secret;result(low?'Too low! ↓':'Too high! ↑','Try another number. The while loop continues.');log(low?'elif guess < secret_number → True':'else branch',low?'Print "Too low! Try again!"':'Print "Too high! Try again!"');}$('score').textContent=`ATTEMPTS: ${state.turns}`;$('guess-input').value='';$('guess-input').focus()}
+const faces=['⚀','⚁','⚂','⚃','⚄','⚅'];function dice(){const a=rnd(1,6),b=rnd(1,6);state.turns++;stage(`<div class="duel-part"><div class="dice">${faces[a-1]}</div><div class="stage-sub">YOU · ${a}</div></div><div class="versus">VS</div><div class="duel-part"><div class="dice">${faces[b-1]}</div><div class="stage-sub">COMPUTER · ${b}</div></div>`);let win=a>b?'You win! 🎉':a<b?'Computer wins!':'It’s a tie!';result(win,`You rolled ${a}, computer rolled ${b}. Roll again?`);log(`Round ${state.turns}: randint()`,`player = ${a}; computer = ${b}. Both are integers from 1 to 6.`);log(a>b?'if player > computer → True':a<b?'elif player < computer → True':'else branch',`Print "${win.replace(' 🎉','').replace('It’s',"It's")}"`);$('score').textContent=`ROUNDS: ${state.turns}`}
+const signs={rock:'✊',paper:'✋',scissors:'✌️'};function rps(player){const computer=pick(['rock','paper','scissors']);state.turns++;stage(`<div class="duel-part"><div class="rps-sign">${signs[player]}</div><div class="stage-sub">YOU · ${player.toUpperCase()}</div></div><div class="versus">VS</div><div class="duel-part"><div class="rps-sign">${signs[computer]}</div><div class="stage-sub">COMPUTER · ${computer.toUpperCase()}</div></div>`);const tie=player===computer,win=(player==='rock'&&computer==='scissors')||(player==='paper'&&computer==='rock')||(player==='scissors'&&computer==='paper');result(tie?'It’s a tie!':win?'You win! 🎉':'Computer wins!',`You chose ${player}; the computer chose ${computer}. Play again!`);log(`Round ${state.turns}: random.choice()`,`computer = "${computer}" from the choices list; player = "${player}".`);log(tie?'if player == computer → True':win?'winning elif condition → True':'else branch',tie?'Both choices are the same.':win?'Your choice beats the computer’s.':'The computer’s choice beats yours.');$('score').textContent=`ROUNDS: ${state.turns}`}
+function lucky(){if(state.done)return;const a=rnd(1,6),b=rnd(1,6),total=a+b;state.turns++;stage(`<div class="duel-part"><div class="dice">${faces[a-1]}</div><div class="stage-sub">DIE ONE · ${a}</div></div><div class="versus">+</div><div class="duel-part"><div class="dice">${faces[b-1]}</div><div class="stage-sub">DIE TWO · ${b}</div></div>`);log(`Roll ${state.turns}: randint()`,`dice1 = ${a}; dice2 = ${b}; total = ${total}; rolls = ${state.turns}.`);if(total===7){state.done=true;result('Lucky Seven! 🍀',`${a} + ${b} = 7. You won in ${state.turns} roll${state.turns===1?'':'s'}!`);log('while total != 7 → False','The loop stops. Print "Lucky Seven! You win!" and the number of rolls.');$('roll').disabled=true;$('game-badge').textContent='● WON'}else{result(`${a} + ${b} = ${total}`,`Not seven yet. Roll again!`);log('while total != 7 → True','The loop runs again for the next roll.');}$('score').textContent=`ROLLS: ${state.turns}`}
+document.querySelectorAll('.game-tab').forEach(b=>b.addEventListener('click',()=>{game=b.dataset.game;document.querySelectorAll('.game-tab').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b))});start()}));$('reset').onclick=start;$('tab-code').onclick=()=>setView('code');$('tab-trace').onclick=()=>setView('trace');$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(samples[game]);$('copy').textContent='Copied ✓';setTimeout(()=>$('copy').textContent='Copy code ↗',1300)}catch{const s=window.getSelection();const r=document.createRange();r.selectNodeContents($('code'));s.removeAllRanges();s.addRange(r);$('copy').textContent='Select & copy code'}};start();
+</script></body></html>
